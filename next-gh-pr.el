@@ -47,6 +47,7 @@ Throws an error if this isn't a GitHub repository."
       (format "gh %s list --state all --limit 1 --json number --jq '.[0].number'" type))))
    0))
 
+;;;###autoload
 (defun next-gh-pr-insert-markdown-link ()
   "Insert a markdown link to the next likely GitHub PR number."
   (interactive)
