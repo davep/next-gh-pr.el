@@ -5,7 +5,7 @@
 ;; Version: 1.0.0
 ;; Keywords: convenience
 ;; URL: https://github.com/davep/next-gh-pr.el
-;; Package-Requires: ((emacs "25.1"))
+;; Package-Requires: ((emacs "26.1"))
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
