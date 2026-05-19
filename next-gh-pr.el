@@ -40,11 +40,12 @@ Throws an error if this isn't a GitHub repository."
 
 (defun next-gh-pr--latest-number (type)
   "Return the number of the latest TYPE of item on GitHub."
-  (or (when-let (result
-                 (shell-command-to-string
-                  (format "gh %s list --state all --limit 1 --json number --jq '.[0].number'" type)))
-        (string-to-number (string-trim result)))
-      0))
+  (or
+   (string-to-number
+    (string-trim
+     (shell-command-to-string
+      (format "gh %s list --state all --limit 1 --json number --jq '.[0].number'" type))))
+   0))
 
 (defun next-gh-pr-insert-markdown-link ()
   "Insert a markdown link to the next likely GitHub PR number."
