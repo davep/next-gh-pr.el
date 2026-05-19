@@ -27,9 +27,6 @@
 
 ;;; Code:
 
-(eval-when-compile
-  (require 'subr-x))
-
 (defun next-gh-pr--get-url ()
   "Return the URL of the current repository.
 
