@@ -50,8 +50,8 @@ Throws an error if this isn't a GitHub repository."
 (defun next-gh-pr-insert-markdown-link ()
   "Insert a markdown link to the next likely GitHub PR number."
   (interactive)
-  (let* ((url (next-gh-pr--get-url))
-         (next-number (1+ (max (next-gh-pr--latest-number "pr") (next-gh-pr--latest-number "issue")))))
+  (let ((url (next-gh-pr--get-url))
+        (next-number (1+ (max (next-gh-pr--latest-number "pr") (next-gh-pr--latest-number "issue")))))
     (insert (format "[#%1$d](%s/pull/%1$d)" next-number url))))
 
 (provide 'next-gh-pr)
