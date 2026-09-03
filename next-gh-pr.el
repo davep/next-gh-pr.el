@@ -2,7 +2,7 @@
 ;; Copyright 2026 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.0.0
+;; Version: 1.1.0
 ;; Keywords: convenience
 ;; URL: https://github.com/davep/next-gh-pr.el
 ;; Package-Requires: ((emacs "26.1"))
@@ -48,12 +48,16 @@ Throws an error if this isn't a GitHub repository."
    0))
 
 ;;;###autoload
-(defun next-gh-pr-insert-markdown-link ()
-  "Insert a markdown link to the next likely GitHub PR number."
-  (interactive)
-  (let ((url (next-gh-pr--get-url))
-        (next-number (1+ (max (next-gh-pr--latest-number "pr") (next-gh-pr--latest-number "issue")))))
-    (insert (format "[#%1$d](%s/pull/%1$d)" next-number url))))
+(defun next-gh-pr-insert-markdown-link (&optional current)
+  "Insert a markdown link to the next likely GitHub PR number.
+
+If CURRENT is non-nil, insert a link to the latest PR number instead."
+  (interactive "*P")
+  (let* ((url (next-gh-pr--get-url))
+         (pr-number (if current
+                        (max 1 (next-gh-pr--latest-number "pr"))
+                      (1+ (max (next-gh-pr--latest-number "pr") (next-gh-pr--latest-number "issue"))))))
+    (insert (format "[#%1$d](%s/pull/%1$d)" pr-number url))))
 
 (provide 'next-gh-pr)
 
